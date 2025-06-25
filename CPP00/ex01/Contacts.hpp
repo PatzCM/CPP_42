@@ -4,6 +4,7 @@ class Contacts
 	public:
 		Contacts(); // Constructor
 		~Contacts(); // Destructor
+		Contacts(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret);
 		void setFirstName(const std::string firstName);
 		void setLastName(const std::string lastName);
 		void setNickname(const std::string nickname);
