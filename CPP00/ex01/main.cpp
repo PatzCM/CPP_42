@@ -25,6 +25,25 @@ int main() {
 					showContacts(phoneBook.contacts, i);
 				}
 			}
+			std::cout << "Enter index to view details: ";
+			int viewIndex;
+			std::cin >> viewIndex;
+			if (viewIndex < 0 || viewIndex >= 8 || phoneBook.contacts[viewIndex].getFirstName().empty()) {
+				std::cout << "Invalid index or contact does not exist." << std::endl;
+			} else {
+				std::cout << "First Name: " << phoneBook.contacts[viewIndex].getFirstName() << std::endl;
+				std::cout << "Last Name: " << phoneBook.contacts[viewIndex].getLastName() << std::endl;
+				std::cout << "Nickname: " << phoneBook.contacts[viewIndex].getNickname() << std::endl;
+				std::cout << "Phone Number: " << phoneBook.contacts[viewIndex].getPhoneNumber() << std::endl;
+				std::cout << "Darkest Secret: " << phoneBook.contacts[viewIndex].getDarkestSecret() << std::endl;
+			}
+		}
+		else if (cmd == "EXIT") {
+			std::cout << "Exiting the program." << std::endl;
+			break;
+		}
+		else {
+			std::cout << "Invalid command. Please enter ADD, SEARCH, or EXIT." << std::endl;
 		}
 	}
 }
@@ -38,6 +57,7 @@ void showContacts(Contacts contacts[], int index) {
 		<< truncate(contacts[index].getFirstName()) << '|'
 		<< truncate(contacts[index].getLastName()) << '|'
 		<< truncate(contacts[index].getNickname()) << std::endl;
+	 
 }
 
 std::string truncate(std::string str) {
