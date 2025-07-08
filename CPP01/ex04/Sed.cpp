@@ -14,11 +14,16 @@ Sed::~Sed()
 void Sed::replace(std::string s1, std::string s2)
 {
 	std::ifstream inputFile(_inputFile);
-	std::ofstream outputFile(_outputFile);
 	std::string input;
 
-	if (inputFile.is_open() && outputFile.is_open())
+	if (inputFile.is_open() == false || inputFile.peek() == std::ifstream::traits_type::eof())
 	{
+		std::cout << "Error: Input file is not valid or empty." << std::endl;
+		return;
+	}
+	if (inputFile.is_open())
+	{
+		std::ofstream outputFile(_outputFile);
 		while (getline(inputFile, input))
 		{
 			size_t pos = input.find(s1, 0);
@@ -26,11 +31,14 @@ void Sed::replace(std::string s1, std::string s2)
 				while (pos != std::string::npos)
 				{
 					input.erase(pos, s1.length());
-					input.insert(pos, s2);
-
+					outputFile << s2 << " ";
+					pos = input.find(s1);
 				}
+				outputFile << input << std::endl;
 			}
 		}
+		inputFile.close();
+		outputFile.close();
 	}
 }
 
