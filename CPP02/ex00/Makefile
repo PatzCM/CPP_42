@@ -1,6 +1,6 @@
 NAME = fixedPoint
 
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wall -Wextra -std=c++98
 
 SRCS = main.cpp Fixed.cpp

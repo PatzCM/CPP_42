@@ -13,7 +13,7 @@ Sed::~Sed()
 
 void Sed::replace(std::string s1, std::string s2)
 {
-	std::ifstream inputFile(_inputFile);
+	std::ifstream inputFile (_inputFile.c_str());
 	std::string input;
 
 	if (inputFile.is_open() == false || inputFile.peek() == std::ifstream::traits_type::eof())
@@ -23,7 +23,7 @@ void Sed::replace(std::string s1, std::string s2)
 	}
 	if (inputFile.is_open())
 	{
-		std::ofstream outputFile(_outputFile);
+		std::ofstream outputFile(_outputFile.c_str());
 		while (getline(inputFile, input))
 		{
 			size_t pos = input.find(s1, 0);

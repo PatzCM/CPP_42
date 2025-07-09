@@ -2,7 +2,7 @@
 CXX = c++
 
 # Define the compiler flags
-CXXFLAGS = -std=c++98 -Wall -Wextra 
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror 
 
 # Define the source files
 SRCS = megaphone.cpp
