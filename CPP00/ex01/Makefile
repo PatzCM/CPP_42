@@ -4,7 +4,10 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -std=c++98
 DEPS =
 
-SRCS = $(wildcard *.cpp)
+SRCS = main.cpp \
+		PhoneBook.cpp \
+		Contacts.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

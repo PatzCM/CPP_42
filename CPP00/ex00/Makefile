@@ -1,8 +1,8 @@
 #define compiler
-CXX = g++
+CXX = c++
 
 # Define the compiler flags
-CXXFLAGS = -std=c++98 -Wall -Wextra -pedantic
+CXXFLAGS = -std=c++98 -Wall -Wextra 
 
 # Define the source files
 SRCS = megaphone.cpp

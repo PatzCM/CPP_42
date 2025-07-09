@@ -10,6 +10,9 @@ int main() {
 		std::string cmd;
 		std::cin >> cmd;
 
+		if (!cmd.size()) {
+			return 0;
+		}
 		if (cmd == "ADD") {
 			phoneBook.addContact(index, phoneBook.contacts);
 			index = (index + 1) % 8;
@@ -25,17 +28,29 @@ int main() {
 					showContacts(phoneBook.contacts, i);
 				}
 			}
-			std::cout << "Enter index to view details: ";
-			int viewIndex;
-			std::cin >> viewIndex;
+			std::cout << "Enter index to view details: " << std::endl;
+			while (1) 
+			{
+				int viewIndex;
+				std::cin >> viewIndex;
+			if (std::cin.eof()) {
+				std::cout << "End of input detected. Exiting." << std::endl;
+				return 0;
+			}
 			if (viewIndex < 0 || viewIndex >= 8 || phoneBook.contacts[viewIndex].getFirstName().empty()) {
 				std::cout << "Invalid index or contact does not exist." << std::endl;
+				std::cout << "Please enter a valid index (0-7): ";
+				std::cin.clear(); // Clear the error state
+				std::cin.ignore();
+				continue;
 			} else {
 				std::cout << "First Name: " << phoneBook.contacts[viewIndex].getFirstName() << std::endl;
 				std::cout << "Last Name: " << phoneBook.contacts[viewIndex].getLastName() << std::endl;
 				std::cout << "Nickname: " << phoneBook.contacts[viewIndex].getNickname() << std::endl;
 				std::cout << "Phone Number: " << phoneBook.contacts[viewIndex].getPhoneNumber() << std::endl;
 				std::cout << "Darkest Secret: " << phoneBook.contacts[viewIndex].getDarkestSecret() << std::endl;
+				break;
+				}
 			}
 		}
 		else if (cmd == "EXIT") {

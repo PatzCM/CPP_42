@@ -13,7 +13,7 @@
 
 NAME = SED
 
-CXX = g++
+CXX = c++
 CXXFLAGS = Wall -Wextra -std=c++98
 
 SRCS = main.cpp \
