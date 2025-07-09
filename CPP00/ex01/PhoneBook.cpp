@@ -9,6 +9,7 @@ PhoneBook::~PhoneBook() {
 
 void PhoneBook::addContact(int index, Contacts contacts[]) {
 	std::string input, firstName, lastName, nickname, phoneNumber, darkestSecret;
+	
 	if (index < 0 || index >= 8) {
 		std::cout << "Index out of bounds. Only 8 contacts can be stored." << std::endl;
 		return;
@@ -17,30 +18,15 @@ void PhoneBook::addContact(int index, Contacts contacts[]) {
 		std::cout << "8 contacts already stored. Overwriting the oldest contact." << std::endl;
 	}
 	std::cout << "Enter contact details:" << std::endl;
-	std::cout << "First Name: ";
-	std::cin >> firstName;
-	if (!firstName.size())
-		return ;
+	if ((firstName = contacts->setString("First Name: ")) == "-1") return; 
 	contacts[index].setFirstName(firstName);
-	std::cout << "Last Name: ";
-	std::cin >> lastName; 
-	if (!lastName.size())
-		return ;
+	if ((lastName = contacts[index].setString("Last Name: ")) == "-1") return;
 	contacts[index].setLastName(lastName);
-	std::cout << "Nickname: ";
-	std::cin >> nickname;
-	if (!nickname.size())
-		return ;
+	if ((nickname =	contacts[index].setString("Nickname: ")) == "-1") return;
 	contacts[index].setNickname(nickname);
-	std::cout << "Phone Number: ";
-	std::cin >> phoneNumber;
-	if (!phoneNumber.size())
-		return ;
+	if ((phoneNumber = contacts[index].setNumber("Phone Number: ")) == "-1") return;
 	contacts[index].setPhoneNumber(phoneNumber);
-	std::cout << "Darkest Secret: ";
-	std::cin >> darkestSecret;
-	if (!darkestSecret.size())
-		return ;
+	if ((darkestSecret = contacts[index].setString("Darkest Secret: ")) == "-1") return;
 	contacts[index].setDarkestSecret(darkestSecret);
 	std::cout << "Contact added at index " << index << "." << std::endl;
 }

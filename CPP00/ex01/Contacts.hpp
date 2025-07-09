@@ -15,7 +15,9 @@ class Contacts
 		std::string getNickname() const;
 		std::string getPhoneNumber() const;
 		std::string getDarkestSecret() const;
-	
+		std::string setString(std::string str);
+		std::string setNumber(std::string str);
+		std::string trimSpaces(const std::string str);
 	private:
 		std::string firstName;
 		std::string lastName;

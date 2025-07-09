@@ -14,6 +14,7 @@ int main() {
 			return 0;
 		}
 		if (cmd == "ADD") {
+			std::cin.ignore(); // Clear the input buffer before getline
 			phoneBook.addContact(index, phoneBook.contacts);
 			index = (index + 1) % 8; 
 		}
