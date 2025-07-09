@@ -1,9 +1,9 @@
-NAME = ClapTrap
+NAME = ScavTrap
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = ClapTrap.cpp main.cpp
+SRCS = ScavTrap.cpp ClapTrap.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
