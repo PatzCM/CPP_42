@@ -15,7 +15,6 @@ void PhoneBook::addContact(int index, Contacts contacts[]) {
 	}
 	if (!contacts[7].getFirstName().empty()) {
 		std::cout << "8 contacts already stored. Overwriting the oldest contact." << std::endl;
-		index = 0; // Overwrite the oldest contac
 	}
 	std::cout << "Enter contact details:" << std::endl;
 	std::cout << "First Name: ";

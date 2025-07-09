@@ -15,7 +15,7 @@ int main() {
 		}
 		if (cmd == "ADD") {
 			phoneBook.addContact(index, phoneBook.contacts);
-			index = (index + 1) % 8;
+			index = (index + 1) % 8; 
 		}
 		else if (cmd == "SEARCH") 
 		{
