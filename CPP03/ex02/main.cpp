@@ -6,16 +6,10 @@ int main() {
   ClapTrap claptrap("CLTP");
 	ScavTrap scavtrap("SCVT");
 	FragTrap fragtrap("FRGT");
-	ClapTrap defaultClaptrap;
-	ScavTrap defaultScavtrap;
-	FragTrap defaultFragtrap;
 
   claptrap.attack("target1");
   claptrap.takeDamage(5);
   claptrap.beRepaired(3);
-	defaultClaptrap.attack("defaultTarget1");
-	defaultClaptrap.takeDamage(2);
-	defaultClaptrap.beRepaired(1);
 
 	scavtrap.attack("target2");
 	scavtrap.takeDamage(10);
