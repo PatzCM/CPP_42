@@ -14,7 +14,6 @@ Sed::~Sed()
 void Sed::replace(std::string s1, std::string s2)
 {
 	std::ifstream inputFile (_inputFile.c_str());
-	std::string input;
 
 	if (inputFile.is_open() == false || inputFile.peek() == std::ifstream::traits_type::eof())
 	{
@@ -24,18 +23,17 @@ void Sed::replace(std::string s1, std::string s2)
 	if (inputFile.is_open())
 	{
 		std::ofstream outputFile(_outputFile.c_str());
+		std::string input;
 		while (getline(inputFile, input))
 		{
-			size_t pos = input.find(s1, 0);
-			{
-				while (pos != std::string::npos)
+			size_t pos = 0;
+				while ((pos =	input.find(s1, pos)) != std::string::npos)
 				{
 					input.erase(pos, s1.length());
-					outputFile << s2 << " ";
-					pos = input.find(s1);
+					input.insert(pos, s2);
+					pos += s2.length();
 				}
 				outputFile << input << std::endl;
-			}
 		}
 		inputFile.close();
 		outputFile.close();
