@@ -10,5 +10,6 @@ public:
 		~Dog();
 
 		void makeSound() const;
+		std::string getType() const;
 };
 
