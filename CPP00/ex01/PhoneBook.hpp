@@ -1,6 +1,15 @@
-#include <iostream>
+#pragma once
+
 #include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <map>
+#include <sstream>
+#include <string>
+#include <ctime>
+#include <string>
 #include "Contacts.hpp"
+
 
 class PhoneBook {
 public:	

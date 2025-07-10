@@ -1,6 +1,7 @@
 #include "PhoneBook.hpp"
 void showContacts(Contacts contacts[], int index);
 std::string truncate(std::string str);
+int atoi(std::string str);
 
 int main() {
 	PhoneBook phoneBook;
@@ -29,14 +30,17 @@ int main() {
 					showContacts(phoneBook.contacts, i);
 				}
 			}
-			std::cout << "Enter index to view details: " << std::endl;
 			while (1) 
 			{
 				int viewIndex;
-				std::cin >> viewIndex;
+				viewIndex = atoi(phoneBook.contacts->setNumber("Enter index to view details or 000 to exit: "));
 			if (std::cin.eof()) {
 				std::cout << "End of input detected. Exiting." << std::endl;
 				return 0;
+			}
+			if (viewIndex == 000) {
+				std::cout << "Exiting view mode." << std::endl;
+				break;
 			}
 			if (viewIndex < 0 || viewIndex >= 8 || phoneBook.contacts[viewIndex].getFirstName().empty()) {
 				std::cout << "Invalid index or contact does not exist." << std::endl;
@@ -83,4 +87,13 @@ std::string truncate(std::string str) {
 	else {
 		return std::string(10 - str.length(), ' ') + str;
 	}
+}
+
+int	atoi(std::string str) {
+	std::istringstream	iss(str);
+	int value;
+
+	if (!(iss >> value))
+		return -1;
+	return value;
 }

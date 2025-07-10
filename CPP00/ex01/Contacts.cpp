@@ -71,7 +71,6 @@ std::string Contacts::setNumber(std::string str) {
   std::string input;
 
 	std::cout << str;
-	std::cin.ignore(); // Clear the input buffer before getline
   while (1) {
     std::getline(std::cin, input);
 		if (std::cin.eof()) {
@@ -80,14 +79,11 @@ std::string Contacts::setNumber(std::string str) {
 		}
 		if (!input.empty() && std::cin.good()) {
 			if (input.find_first_not_of("0123456789") != std::string::npos) {
-			// Check if the input contains any non-digit characters
       std::cout << "Invalid number. Please enter a valid number." << std::endl;
+				continue;
 			}
 			else
 				return input;
-		} else {
-			std::cin.clear();
-			std::cout << "Invalid input. Please enter a valid number." << std::endl;
 		}
 	}
 }

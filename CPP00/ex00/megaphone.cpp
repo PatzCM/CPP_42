@@ -13,5 +13,6 @@ int	main(int argc, char **argv)
 				std::cout << static_cast<char>(toupper(argv[i][j]));
 			}
 		}
+		std::cout << std::endl;
 	}
 }
