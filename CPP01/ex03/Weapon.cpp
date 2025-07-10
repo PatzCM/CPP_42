@@ -2,6 +2,7 @@
 
 Weapon::Weapon(std::string type)
 {
+	std::cout << "Constructor called for weapon of type: " << type << std::endl;
 	this->type = type;
 }
 
@@ -11,6 +12,7 @@ const std::string &Weapon::getType()
 }
 
 Weapon::~Weapon(){
+	std::cout << "Destructor called for weapon of type: " << this->type << std::endl;
 	// Destructor
 }
 

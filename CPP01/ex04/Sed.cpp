@@ -15,6 +15,11 @@ void Sed::replace(std::string s1, std::string s2)
 {
 	std::ifstream inputFile (_inputFile.c_str());
 
+	if (s1.empty() || s2.empty())
+	{
+		std::cout << "Error: Strings to replace or replacement cannot be empty." << std::endl;
+		return;
+	}
 	if (inputFile.is_open() == false || inputFile.peek() == std::ifstream::traits_type::eof())
 	{
 		std::cout << "Error: Input file is not valid or empty." << std::endl;
