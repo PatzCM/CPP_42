@@ -26,8 +26,9 @@ int Fixed::getRawBits() const {
 
 }
 
-Fixed::Fixed( const Fixed &other) : fixedPointValue(other.fixedPointValue) {
+Fixed::Fixed( const Fixed &other)  {
 	std::cout << "Copy constructor called" << std::endl;
+	this->fixedPointValue = other.fixedPointValue;
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
