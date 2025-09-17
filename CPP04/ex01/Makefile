@@ -24,4 +24,13 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# Test target builds separate executable using the test file
+tester: $(filter-out main.cpp,$(SRCS)) tests/tester_ex01.cpp
+	$(CXX) $(CXXFLAGS) -I. -o tester $(filter-out main.cpp,$(SRCS)) tests/tester_ex01.cpp
+
+# Run with: make tester && ./tester
+# Then check memory:
+# valgrind --leak-check=full ./tester   (Linux)
+# leaks -atExit -- ./tester             (macOS)
+
+.PHONY: all clean fclean re tester
