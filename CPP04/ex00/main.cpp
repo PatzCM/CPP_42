@@ -14,6 +14,9 @@ int main() {
   i->makeSound(); // will output the cat sound!
   j->makeSound();
   meta->makeSound();
+	delete j;
+	delete i;
+	delete meta;
 
 	const WrongAnimal *wrongMeta = new WrongAnimal();
 	const WrongAnimal *wrongCat = new WrongCat();
@@ -21,7 +24,8 @@ int main() {
 	std::cout << wrongMeta->getType() << " " << std::endl;
 	wrongCat->makeSound(); // will output the Animal sound if done correctly... because its a wrongCat!
 	wrongMeta->makeSound();
-
+	delete wrongMeta;
+	delete wrongCat;
   return 0;
 
 }
