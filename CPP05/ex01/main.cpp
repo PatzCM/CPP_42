@@ -6,256 +6,53 @@
 /*   By: palexand <palexand@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 21:30:29 by palexand          #+#    #+#             */
-/*   Updated: 2026/03/06 21:31:15 by palexand         ###   ########.fr       */
+/*   Updated: 2026/03/13 20:38:00 by palexand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main() {
-	 std::cout << "Tests with (*) at the begining should print an exception"
-              << std::endl
-              << std::endl;
-
-    /* ------------------------------------ */
-
-    std::cout << "TEST 1) Using default constructer" << std::endl;
+    std::cout << "BUREAUCRAT TESTS" << std::endl;
     try {
-        Bureaucrat obj;
+        Bureaucrat high("Alice", 1);
+        Bureaucrat low("Bob", 150);
+        std::cout << high << std::endl;
+        std::cout << low << std::endl;
+        low.incrementGrade();
+        high.decrementGrade();
+        std::cout << high << std::endl;
+        std::cout << low << std::endl;
     } catch (std::exception &e) {
         std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
     }
-    std::cout << std::endl;
 
-    /* ------------------------------------ */
-
-    std::cout << "TEST 2) Instanciate with valid values" << std::endl;
+    std::cout << "\nFORM TESTS" << std::endl;
     try {
-        Bureaucrat obj("John", 10);
-    } catch (std::exception &e) {
-        std::cout << _RED << "THIS MESSAGE SHOULD NOT PRINT: " << e.what()
-                  << _END << std::endl;
-    }
-    std::cout << std::endl;
+        Bureaucrat signer("Charlie", 10);
+        Form f1("TaxForm", 10, 10);
+        Form f2("SecretForm", 5, 2);
 
-    /* ------------------------------------ */
+        std::cout << f1 << std::endl;
+        std::cout << f2 << std::endl;
 
-    std::cout << "TEST 3) Instanciate with highest grade valid" << std::endl;
-    try {
-        Bureaucrat obj("John", 1);
-    } catch (std::exception &e) {
-        std::cout << _RED << "THIS MESSAGE SHOULD NOT PRINT: " << e.what()
-                  << _END << std::endl;
-    }
-    std::cout << std::endl;
+        signer.signForm(f1);
+        signer.signForm(f2);
 
-    /* ------------------------------------ */
-
-    std::cout << "TEST 4) Instanciate with lowest grade valid" << std::endl;
-    try {
-        Bureaucrat obj("John", 150);
-    } catch (std::exception &e) {
-        std::cout << _RED << "THIS MESSAGE SHOULD NOT PRINT: " << e.what()
-                  << _END << std::endl;
-    }
-    std::cout << std::endl;
-
-    /* ------------------------------------ */
-
-    std::cout << "* TEST 5) Instanciate with grade 0" << std::endl;
-    try {
-        Bureaucrat obj("John", 0);
+        std::cout << f1 << std::endl;
+        std::cout << f2 << std::endl;
     } catch (std::exception &e) {
         std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
     }
-    std::cout << std::endl;
 
-    /* ------------------------------------ */
-
-    std::cout << "* TEST 6) Instanciate with grade 151" << std::endl;
+    std::cout << "\nINVALID FORM TEST" << std::endl;
     try {
-        Bureaucrat obj("John", 151);
+        Form invalid("Broken", 0, 151);
+        std::cout << invalid << std::endl;
     } catch (std::exception &e) {
         std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
     }
-    std::cout << std::endl;
 
-    /* ------------------------------------ */
-
-    std::cout << "TEST 7) Instanciate with grade 1, decrement 2 times and "
-                 "increment 2 times"
-              << std::endl;
-    try {
-        Bureaucrat obj("John", 1);
-        obj.decrementGrade();
-        obj.decrementGrade();
-        obj.incrementGrade();
-        obj.incrementGrade();
-        std::cout << obj << std::endl;
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-
-    /* ------------------------------------ */
-
-    std::cout << "TEST 8) Instanciate with grade 150, decrement and increment"
-              << std::endl;
-    try {
-        Bureaucrat obj("John", 150);
-        obj.incrementGrade();
-        obj.decrementGrade();
-        std::cout << obj << std::endl;
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-
-    /* ------------------------------------ */
-
-    std::cout << "* TEST 9) Instanciate with grade 150 and decrementGrade"
-              << std::endl;
-    try {
-        Bureaucrat obj("John", 150);
-        obj.decrementGrade();
-        std::cout << obj << std::endl;
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-
-    /* ------------------------------------ */
-
-    std::cout << "* TEST 10) Instanciate with grade 1 and increment"
-              << std::endl;
-    try {
-        Bureaucrat obj("John", 1);
-        obj.incrementGrade();
-        std::cout << obj << std::endl;
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-
-    /* ------------------------------------ */
-
-    std::cout << "* TEST 11) Instanciate with grade 1, instanciate by copy and "
-                 "increment"
-              << std::endl;
-    try {
-        Bureaucrat one("John", 1);
-        Bureaucrat two(one);
-        two.incrementGrade();
-        std::cout << one << std::endl;
-        std::cout << two << std::endl;
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-
-    /* ------------------------------------ */
-
-    std::cout << "* TEST 12) Instanciate with grade 1, assign and increment"
-              << std::endl;
-    try {
-        Bureaucrat one("John", 1);
-        Bureaucrat two("Jane", 20);
-        std::cout << two << std::endl;
-        two = one;
-        std::cout << two << std::endl;
-        two.incrementGrade();
-        std::cout << one << std::endl;
-        std::cout << two << std::endl;
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;	return 0;
-
- /* ------------------------------------ */
-{
-    std::cout << "TEST 1) Valid Form and signable" << std::endl;
-    try {
-        Bureaucrat bur("John", 10);
-        Form form("TC39", 10, 10);
-        bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-}
-    /* ------------------------------------ */
-{
-    std::cout << "TEST 2) Valid Form and signable but not executable"
-              << std::endl;
-    try {
-        Bureaucrat bur("John", 10);
-        Form form("TC39", 50, 5);
-        bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-}
-    /* ------------------------------------ */
-{
-    std::cout << "* TEST 3) Valid Form bureaucrat grade to low to sign"
-              << std::endl;
-    try {
-        Bureaucrat bur("John", 70);
-        Form form("TC39", 50, 5);
-        bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-}
-    /* ------------------------------------ */
-{
-    std::cout << "* TEST 4) invalid form, gradeToSign too low" << std::endl;
-    try {
-        Bureaucrat bur("John", 70);
-        Form form("TC39", 200, 5);
-        bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-}
-    /* ------------------------------------ */
-{
-    std::cout << "* TEST 5) invalid form, gradeToSign too high" << std::endl;
-    try {
-        Bureaucrat bur("John", 70);
-        Form form("TC39", 0, 5);
-        bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-}
-    /* ------------------------------------ */
-{
-    std::cout << "* TEST 6) invalid form, gradeToExec too low" << std::endl;
-    try {
-        Bureaucrat bur("John", 70);
-        Form form("TC39", 10, 200);
-        bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-}
-    /* ------------------------------------ */
-{
-    std::cout << "* TEST 7) invalid form, gradeToExec too high" << std::endl;
-    try {
-        Bureaucrat bur("John", 70);
-        Form form("TC39", 10, -2);
-		bur.signForm(form);
-    } catch (std::exception &e) {
-        std::cout << _RED << "Exception: " << e.what() << _END << std::endl;
-    }
-    std::cout << std::endl;
-}
-
+    return 0;
 }
