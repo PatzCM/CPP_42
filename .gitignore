@@ -1,3 +1,10 @@
 *.o
 
 a.out
+
+# Executables
+CPP*/ex*/Bureaucrat
+CPP*/ex*/Form
+CPP*/ex*/Intern
+CPP*/ex*/test
+CPP*/ex*/*.out
