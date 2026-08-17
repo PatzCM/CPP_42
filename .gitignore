@@ -4,3 +4,19 @@ test
 test/
 tester
 delivering/
+
+# IDE and editor files
+.idea/
+.air/
+.cache/
+
+# Compiled binaries
+*.exe
+*.o
+*.out
+
+# Generated output
+**/home_shrubbery
+
+# PDFs and large files
+pdfs/
